@@ -1,31 +1,36 @@
-# 📊 Survey Response Coder (Pandas + LLM API)
+Right now your README intro is clear, but it reads like **documentation** more than a **value pitch**. To “sell” the project better (whether to employers, collaborators, or users), you want to emphasise **pain → solution → impact → credibility**.
 
-A Python tool to **automatically categorise open-ended survey responses** using the [AIBOTS Gov](https://uat.aibots.gov.sg) LLM API.
+Here’s a tightened and more compelling rewrite:
 
 ---
 
-## ❗ Problem Statement
+# 📊 Survey Response Coder (Pandas + LLM API)
 
-Open-ended survey questions provide valuable insights but they’re extremely hard to analyse at scale:
+A lightweight, production-ready tool to **turn messy free-text survey responses into structured insights**, powered by Pandas and the [AIBOTS Gov](https://uat.aibots.gov.sg) LLM API.
 
-* Thousands of free-text answers make manual coding slow and inconsistent.
-* Analysts spend hours creating categories, recoding, and cleaning.
-* Large-scale surveys become unmanageable without automation.
+---
+
+## ❗ Problem
+
+Organisations rely on open-ended survey questions to understand people’s concerns, behaviours, and experiences. But analysing them is a nightmare:
+
+* **Slow:** thousands of responses can take weeks to manually read and code.
+* **Inconsistent:** different analysts apply categories differently, leading to bias.
+* **Unscalable:** insights arrive too late to influence fast-moving decisions.
 
 ---
 
 ## 💡 Solution
 
-This tool automates survey coding:
+**Survey Response Coder** automates this process end-to-end:
 
-* Uses the **AIBOTS Gov LLM API** to categorise answers.
-* Supports **batch processing** (e.g., 10 rows per API call) for speed.
-* Creates a new `[Codes]` column right next to each question.
-* **Autosaves continuously**, so you can stop and resume safely.
+* 🤖 **AI-powered categorisation** — Uses AIBOTS Gov’s LLM to classify responses with high accuracy.
+* ⚡ **Batch processing** — Analyse responses 10× faster by coding rows in configurable chunks.
+* 📝 **Smart output** — Adds a `[Codes]` column directly beside each question for easy tracking.
+* 🔄 **Continuous autosave** — Resume safely even if the process stops mid-run.
+* 🗂️ **Reusable workflows** — Configurable `questions_config.json` lets you plug in new surveys instantly.
 
-The result: clean, labelled survey data that’s ready for analysis.
-
----
+**Outcome:** What once took **hours or days of manual coding** now takes **minutes**, producing **consistent, human-interpretable categories** ready for analysis.
 
 ## 🔑 Pre-requisites
 
