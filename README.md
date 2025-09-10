@@ -1,26 +1,17 @@
-Right now your README intro is clear, but it reads like **documentation** more than a **value pitch**. To “sell” the project better (whether to employers, collaborators, or users), you want to emphasise **pain → solution → impact → credibility**.
-
-Here’s a tightened and more compelling rewrite:
-
----
 
 # 📊 Survey Response Coder (Pandas + LLM API)
 
 A lightweight, production-ready tool to **turn messy free-text survey responses into structured insights**, powered by Pandas and the [AIBOTS Gov](https://uat.aibots.gov.sg) LLM API.
 
----
-
-## ❗ Problem
+## Problem
 
 Organisations rely on open-ended survey questions to understand people’s concerns, behaviours, and experiences. But analysing them is a nightmare:
 
 * **Slow:** thousands of responses can take weeks to manually read and code.
 * **Inconsistent:** different analysts apply categories differently, leading to bias.
 * **Unscalable:** insights arrive too late to influence fast-moving decisions.
-
----
-
-## 💡 Solution
+  
+## Solution
 
 **Survey Response Coder** automates this process end-to-end:
 
@@ -75,8 +66,6 @@ Before running the tool, prepare these:
    * Choose how many responses to process at once.
    * Default = `1` (safe but slower). Example: `--batch-size 10` for 10 rows per API call.
 
----
-
 ## ⚡ Usage
 
 ### 1. Configure your questions
@@ -102,8 +91,6 @@ Example:
 
 * `question_col` must **exactly match** the column header in your survey file.
 * `instruction` applies to **all answers in that column**, not per row.
-
----
 
 ### 2. Run the script
 
@@ -135,8 +122,6 @@ python main.py --input Book1.csv --output Book1.csv --config questions_config.js
 python main.py --input Book1.csv --output Book1.csv --config questions_config.json --batch-size 10 --no-verbose
 ```
 
----
-
 ## 📥 Input CSV format
 
 Your survey file should be a **CSV (or Excel)** with each **open-ended question as a column header**, and each row as a respondent’s answer.
@@ -161,7 +146,6 @@ After running the tool, a new `[Codes]` column will appear immediately **to the 
 | Using strong passwords                                                                             | Password Management                    | Malware, viruses                                                     | Malware                          |
 | Being careful of links                                                                             | Scam Awareness                         | Identity theft                                                       | Identity Theft                   |
 
----
 
 ## ✅ Features
 
@@ -170,12 +154,6 @@ After running the tool, a new `[Codes]` column will appear immediately **to the 
 * Batch mode for speed
 * Safe autosaving (persistent progress with same input/output file)
 * Works with CSV/Excel
-
-Perfect 👍 let’s extend your README with a new section explaining the **categories cache**. This will help users understand why their labels “stick” across runs and why they shouldn’t delete the file unless they want to reset.
-
-Here’s the updated block you can add right after **✅ Features**:
-
----
 
 ## 🗂️ Categories Cache (`categories_cache.json`)
 
@@ -217,11 +195,6 @@ When you run the tool, it automatically maintains a **categories cache** in a fi
 * **Keep this file** between runs to preserve category memory.
 * If you want to **start fresh** (ignore all old categories), simply delete `categories_cache.json`.
 * You can also open it to quickly inspect what categories the model has generated so far.
-
-
-Nice 👍 let’s add a **Summarising Results** section to the README. This will show users how to run your summariser script and what kind of output they’ll get. Here’s the block you can drop in after the **🗂️ Categories Cache** section:
-
----
 
 ## 📊 Summarising Results
 
