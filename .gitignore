@@ -1,0 +1,12 @@
+# Secrets
+.env
+categories_cache.json
+
+# Data
+*.csv
+*.xlsx
+
+# Python
+__pycache__/
+*.pyc
+.venv/
