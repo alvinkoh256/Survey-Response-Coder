@@ -1,17 +1,18 @@
-
 # 📊 Survey Response Coder (Pandas + LLM API) for FormSG
 
 A lightweight, production-ready tool to **turn messy free-text survey responses into structured insights**, powered by Pandas and the [AIBOTS Gov](https://uat.aibots.gov.sg) LLM API.
 
-## Problem
 
-Open-ended survey results are very useful (compared to multiple choices that limits surveyee responses) to understand people's concerns, behaviours and experiences. But analysing them is a nightmare:
+## ❗ Problem
+
+Open-ended survey results are extremely valuable (compared to multiple choice questions that constrain responses) for understanding people’s concerns, behaviours, and experiences. But analysing them is a nightmare:
 
 * **Slow:** thousands of responses can take weeks to manually read and code.
 * **Inconsistent:** different analysts apply categories differently, leading to bias.
 * **Unscalable:** insights arrive too late to influence fast-moving decisions.
-  
-## Solution
+
+
+## 💡 Solution
 
 **Survey Response Coder** automates this process end-to-end:
 
@@ -24,7 +25,29 @@ Open-ended survey results are very useful (compared to multiple choices that lim
 
 **Outcome:** What once took **hours or days of manual coding** now takes **minutes**, producing **consistent, human-interpretable categories** ready for analysis.
 
-## Pre-requisites
+## 📥 Input CSV Format
+
+Your survey file should be a **CSV (or Excel)** with each **open-ended question as a column header**, and each row as a respondent’s answer.
+
+Example (`Book1.csv`):
+
+| What does 'digital safety' mean to you? How do you protect yourself or stay safe in online spaces? | What digital threats are you most concerned about when going online? | What challenges do you face when trying to stay safe online or protecting yourself from digital threats? |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Not giving out personal info                                                                       | Phishing emails                                                      | Hard to tell if websites are real                                                                        |
+| Using strong passwords                                                                             | Malware, viruses                                                     | Too many scam messages                                                                                   |
+| Being careful of links                                                                             | Identity theft                                                       | Don’t know enough about online safety                                                                    |
+
+## 📤 Output CSV Format
+
+After running the tool, a new `[Codes]` column will appear immediately **to the right of each question** with the categorisation labels from the LLM:
+
+| What does 'digital safety' mean to you? How do you protect yourself or stay safe in online spaces? | What does 'digital safety'... \[Codes] | What digital threats are you most concerned about when going online? | What digital threats... \[Codes] |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------- | -------------------------------------------------------------------- | -------------------------------- |
+| Not giving out personal info                                                                       | Privacy Protection                     | Phishing emails                                                      | Phishing                         |
+| Using strong passwords                                                                             | Password Management                    | Malware, viruses                                                     | Malware                          |
+| Being careful of links                                                                             | Scam Awareness                         | Identity theft                                                       | Identity Theft                   |
+
+## 🔑 Pre-requisites
 
 Before running the tool, prepare these:
 
@@ -41,7 +64,7 @@ Before running the tool, prepare these:
 
 3. **API key**
 
-   * Obtain an API key from [AIBOTS Gov Custom Bot - Survey Coder Bot](https://uat.aibots.gov.sg/chats/survey-coder-bot).
+   * Obtain an API key from [AIBOTS Gov Custom Bot – Survey Coder Bot](https://uat.aibots.gov.sg/chats/survey-coder-bot).
    * Export it into your environment:
 
      ```powershell
@@ -66,6 +89,7 @@ Before running the tool, prepare these:
 
    * Choose how many responses to process at once.
    * Default = `1` (safe but slower). Example: `--batch-size 10` for 10 rows per API call.
+
 
 ## ⚡ Usage
 
@@ -95,15 +119,12 @@ Example:
 
 ### 2. Run the script
 
-⚠️ **Important:**
-To allow the script to save progress (persistent writes to the `[Codes]` columns), your `--input` and `--output` must point to the **same file**.
+⚠️ **Important:** To allow the script to save progress (persistent writes to the `[Codes]` columns), your `--input` and `--output` must point to the **same file**.
 
 **Best practice:**
 
 * Keep an untouched copy of your original survey (e.g., `Book1_original.csv`).
 * Create a working copy (e.g., `Book1.csv`) and run the tool on that file.
-
-Refer to [📥 Input CSV format](#-input-csv-format) to understand the structure of your survey file.
 
 **Single row at a time (default):**
 
@@ -123,39 +144,6 @@ python main.py --input Book1.csv --output Book1.csv --config questions_config.js
 python main.py --input Book1.csv --output Book1.csv --config questions_config.json --batch-size 10 --no-verbose
 ```
 
-## 📥 Input CSV format
-
-Your survey file should be a **CSV (or Excel)** with each **open-ended question as a column header**, and each row as a respondent’s answer.
-
-Example (`Book1.csv`):
-
-| What does 'digital safety' mean to you? How do you protect yourself or stay safe in online spaces? | What digital threats are you most concerned about when going online? | What challenges do you face when trying to stay safe online or protecting yourself from digital threats? |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Not giving out personal info                                                                       | Phishing emails                                                      | Hard to tell if websites are real                                                                        |
-| Using strong passwords                                                                             | Malware, viruses                                                     | Too many scam messages                                                                                   |
-| Being careful of links                                                                             | Identity theft                                                       | Don’t know enough about online safety                                                                    |
-
----
-
-## 📤 Output CSV format
-
-After running the tool, a new `[Codes]` column will appear immediately **to the right of each question** with the categorisation labels from the LLM:
-
-| What does 'digital safety' mean to you? How do you protect yourself or stay safe in online spaces? | What does 'digital safety'... \[Codes] | What digital threats are you most concerned about when going online? | What digital threats... \[Codes] |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------- | -------------------------------------------------------------------- | -------------------------------- |
-| Not giving out personal info                                                                       | Privacy Protection                     | Phishing emails                                                      | Phishing                         |
-| Using strong passwords                                                                             | Password Management                    | Malware, viruses                                                     | Malware                          |
-| Being careful of links                                                                             | Scam Awareness                         | Identity theft                                                       | Identity Theft                   |
-
-
-## ✅ Features
-
-* Automates open-ended survey coding
-* Config-driven (`questions_config.json`)
-* Batch mode for speed
-* Safe autosaving (persistent progress with same input/output file)
-* Works with CSV/Excel
-
 ## 🗂️ Categories Cache (`categories_cache.json`)
 
 When you run the tool, it automatically maintains a **categories cache** in a file called `categories_cache.json`.
@@ -166,15 +154,7 @@ When you run the tool, it automatically maintains a **categories cache** in a fi
 * Ensures new categories added in one run are remembered in future runs.
 * Prevents the model from “forgetting” previously assigned labels when you stop and restart the script.
 
-### 🔹 How it works
-
-* Each survey question (by column name) gets its own entry in the cache.
-* After each pass, newly discovered categories are merged into the cache.
-* The cache is reloaded every time you restart, so you can safely resume coding without losing progress.
-
 ### 🔹 Example
-
-`categories_cache.json`:
 
 ```json
 {
@@ -191,12 +171,6 @@ When you run the tool, it automatically maintains a **categories cache** in a fi
 }
 ```
 
-### 🔹 Tips
-
-* **Keep this file** between runs to preserve category memory.
-* If you want to **start fresh** (ignore all old categories), simply delete `categories_cache.json`.
-* You can also open it to quickly inspect what categories the model has generated so far.
-
 ## 📊 Summarising Results
 
 Once your survey responses have been coded, you can quickly analyse the results with the included summariser script.
@@ -211,8 +185,6 @@ Once your survey responses have been coded, you can quickly analyse the results 
 
 ### 🔹 Run it
 
-From your project root:
-
 ```bash
 python scripts/summarise_codes.py --input Book1.csv --save-csv coded_summary.csv
 ```
@@ -220,10 +192,6 @@ python scripts/summarise_codes.py --input Book1.csv --save-csv coded_summary.csv
 ### 🔹 Example Output
 
 ```
-Found 2 coded column(s):
-  • What does 'digital safety' mean to you? How do you protect yourself or stay safe in online spaces? [Codes]
-  • What digital threats are you most concerned about when going online? [Codes]
-
 ===== What does 'digital safety' mean to you? ... [Codes] =====
           Category  Count     %
 Privacy Protection      15  30.00
@@ -239,8 +207,11 @@ NIL                      12  24.00
 Identity Theft  10  20.00
 ```
 
-### 🔹 Where to adjust
+## ✅ Features
 
-* **Which file to summarise:** set with `--input`
-* **Save summary CSV:** set with `--save-csv coded_summary.csv`
-* **Alias normalisation:** edit the `ALIAS_MAP` in `scripts/summarise_codes.py`
+* Automates open-ended survey coding
+* Config-driven (`questions_config.json`)
+* Batch mode for speed
+* Safe autosaving (persistent progress with same input/output file)
+* Works with CSV/Excel
+* Built-in summariser for quick insights
