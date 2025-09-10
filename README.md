@@ -15,11 +15,12 @@ Open-ended survey results are very useful (compared to multiple choices that lim
 
 **Survey Response Coder** automates this process end-to-end:
 
-* **AI-powered categorisation** — Uses AIBOTS Gov’s LLM to classify responses with high accuracy.
-* **Batch processing** — Analyse responses 10× faster by coding rows in configurable chunks.
-* **Smart output** — Adds a `[Codes]` column directly beside each question for easy tracking.
-* **Continuous autosave** — Resume safely even if the process stops mid-run.
-* **Reusable workflows** — Configurable `questions_config.json` lets you plug in new surveys instantly.
+* 🤖 **AI-powered categorisation** — Uses AIBOTS Gov’s LLM to classify responses with high accuracy.
+* ⚡ **Batch processing** — Analyse responses 10× faster by coding rows in configurable chunks.
+* 📝 **Smart output** — Adds a `[Codes]` column directly beside each question for easy tracking.
+* 🔄 **Continuous autosave** — Resume safely even if the process stops mid-run.
+* 🗂️ **Reusable workflows** — Configurable `questions_config.json` lets you plug in new surveys instantly.
+* 📊 **One-line summariser** — Run a simple script afterwards to generate each category’s frequency and percentage of respondents.
 
 **Outcome:** What once took **hours or days of manual coding** now takes **minutes**, producing **consistent, human-interpretable categories** ready for analysis.
 
