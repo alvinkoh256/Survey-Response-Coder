@@ -41,7 +41,7 @@ Before running the tool, prepare these:
 
 3. **API key**
 
-   * Obtain an API key from [AIBOTS Gov](https://uat.aibots.gov.sg).
+   * Obtain an API key from [AIBOTS Gov Custom Bot - Survey Coder Bot](https://uat.aibots.gov.sg/chats/survey-coder-bot).
    * Export it into your environment:
 
      ```powershell
