@@ -1,11 +1,11 @@
 
-# 📊 Survey Response Coder (Pandas + LLM API)
+# 📊 Survey Response Coder (Pandas + LLM API) for FormSG
 
 A lightweight, production-ready tool to **turn messy free-text survey responses into structured insights**, powered by Pandas and the [AIBOTS Gov](https://uat.aibots.gov.sg) LLM API.
 
 ## Problem
 
-Organisations rely on open-ended survey questions to understand people’s concerns, behaviours, and experiences. But analysing them is a nightmare:
+Open-ended survey results are very useful (compared to multiple choices that limits surveyee responses) to understand people's concerns, behaviours and experiences. But analysing them is a nightmare:
 
 * **Slow:** thousands of responses can take weeks to manually read and code.
 * **Inconsistent:** different analysts apply categories differently, leading to bias.
@@ -15,15 +15,15 @@ Organisations rely on open-ended survey questions to understand people’s conce
 
 **Survey Response Coder** automates this process end-to-end:
 
-* 🤖 **AI-powered categorisation** — Uses AIBOTS Gov’s LLM to classify responses with high accuracy.
-* ⚡ **Batch processing** — Analyse responses 10× faster by coding rows in configurable chunks.
-* 📝 **Smart output** — Adds a `[Codes]` column directly beside each question for easy tracking.
-* 🔄 **Continuous autosave** — Resume safely even if the process stops mid-run.
-* 🗂️ **Reusable workflows** — Configurable `questions_config.json` lets you plug in new surveys instantly.
+* **AI-powered categorisation** — Uses AIBOTS Gov’s LLM to classify responses with high accuracy.
+* **Batch processing** — Analyse responses 10× faster by coding rows in configurable chunks.
+* **Smart output** — Adds a `[Codes]` column directly beside each question for easy tracking.
+* **Continuous autosave** — Resume safely even if the process stops mid-run.
+* **Reusable workflows** — Configurable `questions_config.json` lets you plug in new surveys instantly.
 
 **Outcome:** What once took **hours or days of manual coding** now takes **minutes**, producing **consistent, human-interpretable categories** ready for analysis.
 
-## 🔑 Pre-requisites
+## Pre-requisites
 
 Before running the tool, prepare these:
 
